@@ -240,7 +240,7 @@ class ShortThrower(ThrowerAnt):
     name = 'Short'
     food_cost = 2
     max_range = 3
-    implemented = True   # Change to True to view in the GUI
+    implemented = True
 
 class LongThrower(ThrowerAnt):
     """A ThrowerAnt that only throws leaves at Bees at least 5 places away."""
@@ -248,7 +248,7 @@ class LongThrower(ThrowerAnt):
     name = 'Long'
     food_cost = 2
     min_range = 5
-    implemented = True   # Change to True to view in the GUI
+    implemented = True
 
 class FireAnt(Ant):
     """FireAnt cooks any Bee in its Place when it expires."""
@@ -256,7 +256,7 @@ class FireAnt(Ant):
     name = 'Fire'
     damage = 3
     food_cost = 5
-    implemented = False   # Change to True to view in the GUI
+    implemented = True
 
     def reduce_armor(self, amount):
         """Reduce armor by AMOUNT, and remove the FireAnt from its place if it
@@ -276,7 +276,7 @@ class HungryAnt(Ant):
     name = 'Hungry'
     food_cost = 4
     time_to_digest = 3
-    implemented = False   # Change to True to view in the GUI
+    implemented = True
 
     def __init__(self, armor=1):
         self.armor = armor
@@ -300,7 +300,7 @@ class NinjaAnt(Ant):
     damage = 1
     food_cost = 5
     blocks_path = False
-    implemented = False   # Change to True to view in the GUI
+    implemented = True
 
     def action(self, colony):
         for bee in list(self.place.bees):
@@ -319,7 +319,7 @@ class BodyguardAnt(Ant):
     name = 'Bodyguard'
     is_container = True
     food_cost = 4
-    implemented = False   # Change to True to view in the GUI
+    implemented = True
 
     def __init__(self, armor=2):
         Ant.__init__(self, armor)
@@ -341,7 +341,7 @@ class TankAnt(BodyguardAnt):
     name = 'Tank'
     damage = 1
     food_cost = 6
-    implemented = False   # Change to True to view in the GUI
+    implemented = True
 
     def action(self, colony):
         for bee in list(self.place.bees):
@@ -364,12 +364,12 @@ class ScubaThrower(ThrowerAnt):
     is_watersafe = True
     implemented = False
 
-class QueenAnt(ScubaThrower):  # You should change this line
+class QueenAnt(ScubaThrower):
     """The Queen of the colony. The game is over if a bee enters her place."""
     name = 'Queen'
     already_exists = False
     food_cost = 7
-    implemented = False   # Change to True to view in the GUI
+    implemented = True
 
     def __init__(self, armor=1):
         self.true_queen = False
@@ -460,7 +460,7 @@ class SlowThrower(ThrowerAnt):
     name = 'Slow'
     food_cost = 4
     armor = 1
-    implemented = False   # Change to True to view in the GUI
+    implemented = True
 
     def throw_at(self, target):
         if target:
@@ -472,17 +472,15 @@ class ScaryThrower(ThrowerAnt):
 
     name = 'Scary'
     food_cost = 6
-    implemented = False   # Change to True to view in the GUI
+    implemented = True
 
     def throw_at(self, target):
         if target and not target.scared:
             apply_effect(make_scare, target, 2)
 
 class LaserAnt(ThrowerAnt):
-    # This class is optional. Only one test is provided for this class.
-
     name = 'Laser'
-    implemented = False   # Change to True to view in the GUI
+    implemented = True
 
     def __init__(self, armor=1):
         ThrowerAnt.__init__(self, armor)
